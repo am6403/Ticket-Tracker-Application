@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Tracker Application</title>
+    <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        
+    <a class="navbar-brand" href="#">Ticket Tracker Application</a>
+      
+        
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+      
+    
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+        
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/tickettrackerapplication}">New Ticket</a>
+        </li>
+        </ul>
+    </div>
+</nav>
+<br>
+</br>
+    <div class ="container">
+        <div class="row">
+            <div class="col-Lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <h1 class="text-center">Create New ticket</h1>
+                <div class="card-body">
+                    <form th:action="@{/tickettrackerapplication}" th:object="${ticket}" method="POST">
+                        <div class="form-group">
+                            <label>Ticket Title</label>
+                            <input 
+                            type="text" 
+                            name="Tickettitle" 
+                            th:field="*{ticketTitle}"
+                            class="form-control"
+                            placeholder="Enter Ticket Title"
+                            />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Ticket created On</label>
+                            <input 
+                            type="text" 
+                            name="Ticket created On" 
+                            th:field="*{ticketCreatedDate}"
+                            class="form-control"
+                            placeholder="Enter Ticket Created On"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ticket Description</label>
+                            <input 
+                            type="text" 
+                            name="Ticket Description" 
+                            th:field="*{ticketShortDescription}"
+                            class="form-control"
+                            placeholder="Enter Ticket Description"
+                            />
+                        </div>
+                        
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">
+                                submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

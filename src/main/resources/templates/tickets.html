@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+   
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Tracker Application</title>
+    <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+    
+    
+    
+
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+       
+    <a class="navbar-brand" th:href="@{/tickettrackerapplication}">Ticket Tracker Application</a>
+      
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+      
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+        
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/tickettrackerapplication/new}">New Ticket</a>
+        </li>
+        </ul>
+    </div>
+</nav>
+<style>
+    .move{
+        margin-left: 400px;
+        margin-top:20px;
+        margin-bottom: 20px;
+        
+    }
+</style>
+      
+
+    <div class ="container">
+        <div class="row" >
+            
+            <h1 class="move"> List of Tickets </h1>
+        </div>
+        
+        <!-- <div class="row">
+            <div class="col-Lg-3">
+                <a th:href="@{/tickettrackerapplication/new}" class="btn btn-primary btn-sm mb-3"> Add Ticket</a>
+            </div>
+        </div> -->
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    
+                    <th>Ticket Title</th>
+                    <th>Ticket created on</th>
+                    <th>Ticket Description</th>
+                    <th>Action</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each ="ticket:${tickets}">
+                    <td th:text="${ticket.ticketTitle}"></td>
+                    <td th:text="${ticket.ticketCreatedDate}"></td>
+                    <td th:text="${ticket.ticketShortDescription}"></td>
+                    <td>
+                        <a th:href="@{/tickettrackerapplication/edit/{id}(id=${ticket.id})}" class="btn btn-primary">update</a>
+                        <a th:href="@{/tickettrackerapplication/{id}(id=${ticket.id})}" class="btn btn-danger">Delete</a>
+                    </td>
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    
+</html>
+
