@@ -3,6 +3,8 @@ package com.ashish.tickettracker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ashish.TtaEntitySorter;
+
 import java.util.List; 
 
 @Service
@@ -14,12 +16,11 @@ public class TtaService {
         super();
         this.ttarespository = ttarespository;
     }
-
-    public List<TtaEntity> getALLTicket(){
-        return ttarespository.findAll();
-
+    public List<TtaEntity> getALLTicketSortedByStatus() {
+        List<TtaEntity> tickets = ttarespository.findAll();
+        return TtaEntitySorter.sortEntitiesByStatus(tickets);
     }
-   
+    
     public TtaEntity saveticket(TtaEntity ticket){
         return ttarespository.save(ticket);
     }

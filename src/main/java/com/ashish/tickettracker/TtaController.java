@@ -19,9 +19,10 @@ public class TtaController {
         this.ttaService=ttaService;
     }
 
+
     @GetMapping("/tickettrackerapplication")
     public String listticket(Model model) {
-        model.addAttribute("tickets", ttaService.getALLTicket());
+        model.addAttribute("tickets", ttaService.getALLTicketSortedByStatus());
         return "tickets";
     }
 
@@ -51,6 +52,7 @@ public class TtaController {
         existingTicket.setTicketTitle(ticket.getTicketTitle());
         existingTicket.setTicketCreatedDate(ticket.getTicketCreatedDate());
         existingTicket.setTicketShortDescription(ticket.getTicketShortDescription());
+        existingTicket.setStatus(ticket.getStatus());
 
         ttaService.updateTicket(existingTicket);
         return "redirect:/tickettrackerapplication";

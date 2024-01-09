@@ -26,12 +26,26 @@ public class TtaEntity {
 
     @Column(name="ticket_short_description")
     private String ticketShortDescription;
+
     
-    public TtaEntity(Long id, String ticketTitle, LocalDateTime ticketCreatedDate, String ticketShortDescription) {
+    private String status="Created" ;
+    
+    public String getStatus() {
+        return status;
+    }
+
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
+    public TtaEntity(Long id, String ticketTitle, LocalDateTime ticketCreatedDate, String ticketShortDescription, String status) {
         this.id = id;
         this.ticketTitle = ticketTitle;
         this.ticketCreatedDate = ticketCreatedDate;
         this.ticketShortDescription = ticketShortDescription;
+        this.status=status;
     }
 
 
